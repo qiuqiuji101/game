@@ -90,31 +90,4 @@ public class PdfController {
         out.flush();
         out.close();
     }
-
-
-
-    /*
-    * 文件下载实现-2
-    */
-    @GetMapping("/download2")
-    public ResponseEntity<byte[]> filedownload(HttpServletRequest request) throws Exception {
-        //指定要下载的文件路径
-        String zipPath = basePath + zipRelPath;
-        String filename = FilenameUtils.getName(zipPath);
-        //创建文件对象
-        File file = new File(zipPath);
-        //设置响应头
-        HttpHeaders headers = new HttpHeaders();
-        //通知浏览器以下载的形式打开
-        headers.setContentDispositionFormData("attachment",filename);
-        //定义以流的形式下载返回文件数据
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        try {
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(file),headers, HttpStatus.OK);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<byte[]>(e.getMessage().getBytes(),HttpStatus.EXPECTATION_FAILED);
-        }
-    }
-
 }

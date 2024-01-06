@@ -33,7 +33,7 @@ public class TfPageProcessor implements PageProcessor {
         HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
         httpClientDownloader.setProxyProvider(SimpleProxyProvider.from(new Proxy(proxyHost,proxyPort)));
         Spider.create(new TfPageProcessor()).addUrl("https://medium.com/?tag=software-engineering")
-                .setDownloader(httpClientDownloader)
+//                .setDownloader(httpClientDownloader)
                 .addPipeline(new TfResPipeline(pdfBasePath)).run();
     }
 }
