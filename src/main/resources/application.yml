@@ -1,0 +1,30 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /program
+
+spring:
+  servlet:
+    multipart: # 上传附件的最大值
+      max-file-size: 5MB
+      max-request-size: 10MB
+  web:
+    resources:
+      static-locations: classpath:/templates/,classpath:/static/
+
+logging:
+  level:
+    cn.tf.code: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+cn:
+  tf:
+    store:
+      path: C:/test
+    proxy:
+      host: 127.0.0.1
+      port: 7890
+
+
+
